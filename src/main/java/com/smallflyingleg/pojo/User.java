@@ -1,4 +1,4 @@
-package com.smallflyingleg.smallflyingleg.pojo;
+package com.smallflyingleg.pojo;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;

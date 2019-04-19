@@ -1,8 +1,8 @@
-package com.smallflyingleg.smallflyingleg.service;
+package com.smallflyingleg.service;
 
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
-import com.smallflyingleg.smallflyingleg.controller.UploadController;
+import com.smallflyingleg.controller.UploadController;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

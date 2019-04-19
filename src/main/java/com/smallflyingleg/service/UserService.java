@@ -1,6 +1,6 @@
-package com.smallflyingleg.smallflyingleg.service;
+package com.smallflyingleg.service;
 
-import com.smallflyingleg.smallflyingleg.pojo.User;
+import com.smallflyingleg.pojo.User;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

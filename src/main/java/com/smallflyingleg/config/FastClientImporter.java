@@ -1,4 +1,4 @@
-package com.smallflyingleg.smallflyingleg.config;
+package com.smallflyingleg.config;
 
 import com.github.tobato.fastdfs.FdfsClientConfig;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package com.smallflyingleg.smallflyingleg.controller;
+package com.smallflyingleg.controller;
 
-import com.smallflyingleg.smallflyingleg.pojo.User;
+import com.smallflyingleg.pojo.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

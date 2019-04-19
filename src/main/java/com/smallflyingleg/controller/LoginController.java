@@ -1,4 +1,4 @@
-package com.smallflyingleg.smallflyingleg.controller;
+package com.smallflyingleg.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

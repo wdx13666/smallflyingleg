@@ -1,8 +1,8 @@
-package com.smallflyingleg.smallflyingleg;
+package com.smallflyingleg;
 
-import com.smallflyingleg.smallflyingleg.mapper.UserMapper;
-import com.smallflyingleg.smallflyingleg.pojo.User;
-import com.smallflyingleg.smallflyingleg.service.ItemRepository;
+import com.smallflyingleg.mapper.UserMapper;
+import com.smallflyingleg.pojo.User;
+import com.smallflyingleg.service.ItemRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

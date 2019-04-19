@@ -1,8 +1,8 @@
-package com.smallflyingleg.smallflyingleg.service.impl;
+package com.smallflyingleg.service.impl;
 
-import com.smallflyingleg.smallflyingleg.pojo.User;
-import com.smallflyingleg.smallflyingleg.mapper.UserMapper;
-import com.smallflyingleg.smallflyingleg.service.UserService;
+import com.smallflyingleg.mapper.UserMapper;
+import com.smallflyingleg.pojo.User;
+import com.smallflyingleg.service.UserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +16,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
-    
+
 }

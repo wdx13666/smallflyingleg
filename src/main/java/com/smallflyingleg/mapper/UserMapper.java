@@ -1,7 +1,7 @@
-package com.smallflyingleg.smallflyingleg.mapper;
+package com.smallflyingleg.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.smallflyingleg.smallflyingleg.pojo.User;
+import com.smallflyingleg.pojo.User;
 
 public interface UserMapper extends BaseMapper<User> {
 

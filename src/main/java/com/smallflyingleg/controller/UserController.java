@@ -1,8 +1,8 @@
-package com.smallflyingleg.smallflyingleg.controller;
+package com.smallflyingleg.controller;
 
 
-import com.smallflyingleg.smallflyingleg.pojo.User;
-import com.smallflyingleg.smallflyingleg.service.UserService;
+import com.smallflyingleg.pojo.User;
+import com.smallflyingleg.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

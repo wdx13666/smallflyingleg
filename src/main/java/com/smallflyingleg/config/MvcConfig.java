@@ -1,6 +1,6 @@
-package com.smallflyingleg.smallflyingleg.config;
+package com.smallflyingleg.config;
 
-import com.smallflyingleg.smallflyingleg.interceptor.LoginInterceptor;
+import com.smallflyingleg.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

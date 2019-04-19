@@ -1,6 +1,6 @@
-package com.smallflyingleg.smallflyingleg.service;
+package com.smallflyingleg.service;
 
-import com.smallflyingleg.smallflyingleg.pojo.Item;
+import com.smallflyingleg.pojo.Item;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;

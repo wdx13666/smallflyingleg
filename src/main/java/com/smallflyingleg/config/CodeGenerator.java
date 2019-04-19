@@ -1,4 +1,4 @@
-package com.smallflyingleg.smallflyingleg.config;
+package com.smallflyingleg.config;
 
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;

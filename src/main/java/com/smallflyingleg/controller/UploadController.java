@@ -1,6 +1,6 @@
-package com.smallflyingleg.smallflyingleg.controller;
+package com.smallflyingleg.controller;
 
-import com.smallflyingleg.smallflyingleg.service.UploadService;
+import com.smallflyingleg.service.UploadService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

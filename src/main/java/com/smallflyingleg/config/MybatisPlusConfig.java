@@ -1,4 +1,4 @@
-package com.smallflyingleg.smallflyingleg.config;
+package com.smallflyingleg.config;
 
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.plugins.PerformanceInterceptor;
@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@MapperScan("com.smallflyingleg.smallflyingleg.mapper")
+@MapperScan("com.smallflyingleg.mapper")
 public class MybatisPlusConfig {
 
     /**

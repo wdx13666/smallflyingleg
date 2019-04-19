@@ -1,4 +1,4 @@
-package com.smallflyingleg.smallflyingleg.vo;
+package com.smallflyingleg.vo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;

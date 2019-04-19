@@ -1,4 +1,4 @@
-package com.smallflyingleg.smallflyingleg.interceptor;
+package com.smallflyingleg.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
