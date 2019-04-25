@@ -1,10 +1,14 @@
 package com.smallflyingleg.service.impl;
 
-import com.smallflyingleg.pojo.SysRolePermission;
-import com.smallflyingleg.mapper.SysRolePermissionMapper;
-import com.smallflyingleg.service.SysRolePermissionService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.smallflyingleg.mapper.SysRolePermissionMapper;
+import com.smallflyingleg.pojo.SysRolePermission;
+import com.smallflyingleg.service.SysRolePermissionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +20,18 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysRolePermissionServiceImpl extends ServiceImpl<SysRolePermissionMapper, SysRolePermission> implements SysRolePermissionService {
+
+    @Autowired
+    private SysRolePermissionService rolePermissionService;
+
+    @Transactional
+    @Override
+    public boolean insertRolePermission(List<SysRolePermission> rolePermissions, Long id) {
+        Integer integer = baseMapper.deleteById(id);
+        boolean b = rolePermissionService.insertBatch(rolePermissions);
+        return b;
+
+    }
+
 
 }

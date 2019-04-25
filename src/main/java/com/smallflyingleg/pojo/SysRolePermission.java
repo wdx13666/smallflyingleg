@@ -19,7 +19,7 @@ public class SysRolePermission extends Model<SysRolePermission> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "role_id", type = IdType.AUTO)
+    @TableId(value = "role_id", type = IdType.INPUT)
     private Long roleId;
     private Long permissionId;
 

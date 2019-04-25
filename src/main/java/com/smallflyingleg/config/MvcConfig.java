@@ -1,9 +1,8 @@
 package com.smallflyingleg.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+//@Configuration
 public class MvcConfig implements WebMvcConfigurer {
     /**
      * 通过@Bean注解，将我们定义的拦截器注册到Spring容器

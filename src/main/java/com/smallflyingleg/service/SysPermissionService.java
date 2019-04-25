@@ -1,7 +1,9 @@
 package com.smallflyingleg.service;
 
-import com.smallflyingleg.pojo.SysPermission;
 import com.baomidou.mybatisplus.service.IService;
+import com.smallflyingleg.pojo.SysPermission;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +14,7 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2019-04-22
  */
 public interface SysPermissionService extends IService<SysPermission> {
+
+    public List<SysPermission> selectPermissionsByRoleId(Integer roleId);
 
 }

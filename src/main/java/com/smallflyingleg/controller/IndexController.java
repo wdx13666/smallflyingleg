@@ -17,8 +17,9 @@ public class IndexController {
     @RequestMapping(value = {"/", "/index"})
     public String index(Model model) {
         SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
-        model.addAttribute("userName", sysUser.getFullName());
-        return "index";
+        model.addAttribute("sysUser", sysUser);
+        model.addAttribute("user", sysUser);
+        return "page/index";
     }
 
 

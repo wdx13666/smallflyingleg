@@ -4,5 +4,7 @@
 
     <!-- 开启二级缓存 -->
     <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
-
+    <select id="selectPermissionsByRoleId" parameterType="integer" resultType="com.smallflyingleg.pojo.SysPermission">
+        select * from sf_sys_permission p,sf_sys_role_permission rp where p.id = rp.permission_id and  rp.role_id = #{id}
+    </select>
 </mapper>

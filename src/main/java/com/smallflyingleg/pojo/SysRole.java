@@ -1,12 +1,12 @@
 package com.smallflyingleg.pojo;
 
-import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.enums.IdType;
+import lombok.Data;
+
+import java.util.Set;
 
 /**
  * <p>
@@ -16,8 +16,9 @@ import java.io.Serializable;
  * @author wdx
  * @since 2019-04-22
  */
+@Data
 @TableName("sf_sys_role")
-public class SysRole extends Model<SysRole> {
+public class SysRole {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,33 +29,10 @@ public class SysRole extends Model<SysRole> {
      */
     private String roleName;
 
+    @TableField(exist = false)
+    private Set<SysPermission> permissions;
 
-    public Long getRoleId() {
-        return roleId;
-    }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
 
-    public String getRoleName() {
-        return roleName;
-    }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    @Override
-    protected Serializable pkVal() {
-        return this.roleId;
-    }
-
-    @Override
-    public String toString() {
-        return "SysRole{" +
-        ", roleId=" + roleId +
-        ", roleName=" + roleName +
-        "}";
-    }
 }

@@ -1,13 +1,16 @@
 package com.smallflyingleg.pojo;
 
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -19,6 +22,7 @@ import java.io.Serializable;
  */
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @TableName("sf_sys_user")
 public class SysUser extends Model<SysUser> {
 
@@ -42,61 +46,14 @@ public class SysUser extends Model<SysUser> {
      * 盐
      */
     private String salt;
-
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+    /**
+     * 菜单
+     */
+    @TableField(exist = false)
+    private List<SysPermission> menus;
 
     @Override
     protected Serializable pkVal() {
-        return this.userId;
-    }
-
-    @Override
-    public String toString() {
-        return "SysUser{" +
-        ", userId=" + userId +
-        ", userName=" + userName +
-        ", fullName=" + fullName +
-        ", password=" + password +
-        ", salt=" + salt +
-        "}";
+        return null;
     }
 }

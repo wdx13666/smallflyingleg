@@ -1,16 +1,12 @@
 package com.smallflyingleg;
 
 import com.smallflyingleg.mapper.UserMapper;
-import com.smallflyingleg.pojo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,12 +22,15 @@ public class SmallflyinglegApplicationTests {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Test
     public void testUser(){
-        System.out.println("-------------------------");
-        List<User> users = userMapper.selectList(null);
-        users.forEach(System.out::println);
+
+//        redisTemplate.opsForValue().set("msh","hello");
+        Object msh = redisTemplate.boundSetOps("msh");
+        System.out.println(msh);
     }
 
 

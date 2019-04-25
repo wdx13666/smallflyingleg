@@ -12,7 +12,6 @@ import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -54,7 +53,9 @@ public class UserRealm extends AuthorizingRealm {
         if (sysUser == null) {
             return null;
         }
+        List<SysPermission> menus = permissionService.selectList(null);
+        sysUser.setMenus(menus);
         log.info("doGetAuthenticationInfo");
-        return new SimpleAuthenticationInfo(sysUser, sysUser.getPassword().toCharArray(), ByteSource.Util.bytes(sysUser.getSalt()), getName());
+        return new SimpleAuthenticationInfo(sysUser, sysUser.getPassword(), /*ByteSource.Util.bytes(sysUser.getSalt()),*/ getName());
     }
 }

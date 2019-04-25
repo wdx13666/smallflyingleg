@@ -21,13 +21,11 @@ public class LoginController {
      */
     @GetMapping("/login")
     public String login() {
-        Integer a =10;
-        int b = a/0;
         //如果已经认证通过，直接跳转到首页
         if (SecurityUtils.getSubject().isAuthenticated()) {
             return "redirect:/index";
         }
-        return "login";
+        return "/page/login";
     }
 
     /**
@@ -55,7 +53,7 @@ public class LoginController {
         } catch (Throwable e) {
             model.addAttribute("message", "未知错误！");
         }
-        return "login";
+        return "/page/login";
     }
 
     /**
@@ -65,7 +63,7 @@ public class LoginController {
     @RequestMapping("/logout")
     public String logout() {
         SecurityUtils.getSubject().logout();
-        return "login";
+        return "/page/login";
     }
 
 }

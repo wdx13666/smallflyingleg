@@ -20,6 +20,14 @@ spring:
       max-file-size: 5MB # 限制文件上传的大小
   thymeleaf: #关闭thymeleaf缓存
     cache: false
+  #redis
+  redis:
+    host: 192.168.200.128
+  rabbitmq:
+    host: 192.168.200.128
+    username: guest
+    password: guest
+
 #  profiles:
 #    active: dev
 #图片上传
@@ -33,7 +41,6 @@ fdfs:
     - 192.168.200.128:22122
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
-  type-aliases-package: com.smallflyingleg.pojo
   global-config:
     #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
     id-type: 0
@@ -47,6 +54,8 @@ mybatis-plus:
     table-prefix: sf_
   configuration:
     map-underscore-to-camel-case: true
+  type-aliases-package: com.smallflyingleg.pojo
+
 
 
 

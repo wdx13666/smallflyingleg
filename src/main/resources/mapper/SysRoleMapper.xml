@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.smallflyingleg.mapper.SysRoleMapper">
-
+<mapper namespace="com.smallflyingleg.mapper.SysRoleMapper" >
     <!-- 开启二级缓存 -->
     <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+    <resultMap type="com.smallflyingleg.pojo.SysRole" id="rolePermission">
+        <id column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+        <collection property="permissions" ofType="com.smallflyingleg.pojo.SysPermission">
+            <id column="id" property="id"/>
+            <result column="parent_id" property="parentId"/>
+            <result column="res_name" property="resName"/>
+            <result column="res_type" property="resType"/>
+            <result column="permission" property="permission"/>
+            <result column="url" property="url"/>
+        </collection>
+    </resultMap>
 
 </mapper>
