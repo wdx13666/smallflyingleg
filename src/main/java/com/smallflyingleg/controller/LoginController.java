@@ -1,3 +1,4 @@
+/*
 package com.smallflyingleg.controller;
 
 import org.apache.shiro.SecurityUtils;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 
-    /**
+    */
+/**
      * get请求，登录页面跳转
      * @return
-     */
+     *//*
+
     @GetMapping("/login")
     public String login() {
         //如果已经认证通过，直接跳转到首页
@@ -28,13 +31,15 @@ public class LoginController {
         return "/page/login";
     }
 
-    /**
+    */
+/**
      * post表单提交，登录
      * @param username
      * @param password
      * @param model
      * @return
-     */
+     *//*
+
     @PostMapping("/login")
     public Object login(String username, String password, Model model) {
         Subject user = SecurityUtils.getSubject();
@@ -56,10 +61,12 @@ public class LoginController {
         return "/page/login";
     }
 
-    /**
+    */
+/**
      * 退出
      * @return
-     */
+     *//*
+
     @RequestMapping("/logout")
     public String logout() {
         SecurityUtils.getSubject().logout();
@@ -68,3 +75,4 @@ public class LoginController {
 
 }
 
+*/

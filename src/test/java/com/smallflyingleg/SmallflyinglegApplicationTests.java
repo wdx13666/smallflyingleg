@@ -6,7 +6,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.mail.internet.MimeMessage;
+import java.io.File;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,6 +30,41 @@ public class SmallflyinglegApplicationTests {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+
+    @Autowired
+    private JavaMailSenderImpl mailSender;
+
+    @Test
+    public void contextLoads() {
+        SimpleMailMessage message = new SimpleMailMessage();
+        //邮件设置
+        message.setSubject("通知-今晚吃烤鸭");
+        message.setText("今晚7:30吃烤鸭");
+        message.setTo("577274319@qq.com");
+        message.setFrom("872386515@qq.com");
+        mailSender.send(message);
+    }
+
+    @Test
+    public void test02() throws  Exception{
+        //1、创建一个复杂的消息邮件
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+
+        //邮件设置
+        helper.setSubject("通知-今晚吃烤鸭");
+        helper.setText("<b style='color:red'>今晚7:30吃烤鸭</b>",true);
+
+        helper.setTo("577274319@qq.com");
+        helper.setFrom("872386515@qq.com");
+
+        //上传文件
+        helper.addAttachment("1.jpg",new File("C:\\Users\\Administrator\\Desktop\\1.jpg"));
+
+        mailSender.send(mimeMessage);
+
+    }
 
     @Test
     public void testUser(){

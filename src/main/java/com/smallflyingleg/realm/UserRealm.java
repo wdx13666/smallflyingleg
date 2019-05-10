@@ -1,3 +1,4 @@
+/*
 package com.smallflyingleg.realm;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -23,12 +24,14 @@ public class UserRealm extends AuthorizingRealm {
     private SysPermissionService permissionService;
     @Autowired
     private SysUserService sysUserService;
-    /**
+    */
+/**
      * 授权
      *
      * @param principals
      * @return
-     */
+     *//*
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         SysUser sysUser = (SysUser) principals.getPrimaryPrincipal();
@@ -39,13 +42,15 @@ public class UserRealm extends AuthorizingRealm {
         return info;
     }
 
-    /**
+    */
+/**
      * 认证
      *
      * @param authenticationToken
      * @return
      * @throws AuthenticationException
-     */
+     *//*
+
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
@@ -56,6 +61,9 @@ public class UserRealm extends AuthorizingRealm {
         List<SysPermission> menus = permissionService.selectList(null);
         sysUser.setMenus(menus);
         log.info("doGetAuthenticationInfo");
-        return new SimpleAuthenticationInfo(sysUser, sysUser.getPassword(), /*ByteSource.Util.bytes(sysUser.getSalt()),*/ getName());
+        return new SimpleAuthenticationInfo(sysUser, sysUser.getPassword(), */
+/*ByteSource.Util.bytes(sysUser.getSalt()),*//*
+ getName());
     }
 }
+*/

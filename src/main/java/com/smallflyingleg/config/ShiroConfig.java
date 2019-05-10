@@ -1,3 +1,4 @@
+/*
 package com.smallflyingleg.config;
 
 import com.smallflyingleg.realm.UserRealm;
@@ -13,25 +14,31 @@ import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
-    /**
+    */
+/**
      * 凭证匹配器
      *
      * @return
-     */
-    /*@Bean
+     *//*
+
+    */
+/*@Bean
     public HashedCredentialsMatcher hashedCredentialsMatcher() {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         //md5加密1次
         hashedCredentialsMatcher.setHashAlgorithmName("md5");
         hashedCredentialsMatcher.setHashIterations(1);
         return hashedCredentialsMatcher;
-    }*/
+    }*//*
 
-    /**
+
+    */
+/**
      * 自定义realm
      *
      * @return
-     */
+     *//*
+
     @Bean
     public UserRealm userRealm() {
         UserRealm userRealm = new UserRealm();
@@ -39,12 +46,14 @@ public class ShiroConfig {
         return userRealm;
     }
 
-    /**
+    */
+/**
      * 安全管理器
      * 注：使用shiro-spring-boot-starter 1.4时，返回类型是SecurityManager会报错，直接引用shiro-spring则不报错
      *
      * @return
-     */
+     *//*
+
     @Bean
     public DefaultWebSecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
@@ -53,12 +62,14 @@ public class ShiroConfig {
     }
 
 
-    /**
+    */
+/**
      * 设置过滤规则
      *
      * @param securityManager
      * @return
-     */
+     *//*
+
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -90,3 +101,4 @@ public class ShiroConfig {
 
 
 
+*/

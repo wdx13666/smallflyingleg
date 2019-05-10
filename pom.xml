@@ -138,11 +138,11 @@
             <version>2.3</version>
         </dependency>
         <!-- shiro -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-starter</artifactId>
             <version>1.4.0</version>
-        </dependency>
+        </dependency>-->
 
         <!--redis-->
         <dependency>
@@ -155,6 +155,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
     </dependencies>
 
     <!--这个插件，可以将应用打包成一个可执行的jar包;-->

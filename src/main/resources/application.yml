@@ -27,7 +27,15 @@ spring:
     host: 192.168.200.128
     username: guest
     password: guest
-
+  mail:
+    username: 872386515@qq.com
+    password: tcgwpjkdnaurbdie
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+    host: smtp.qq.com
 #  profiles:
 #    active: dev
 #图片上传
@@ -69,6 +77,9 @@ mybatis-plus:
 
 
 
+#management:
+#  security:
+#    enabled: false
 ---
 
 
