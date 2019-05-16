@@ -1,11 +1,15 @@
 package com.smallflyingleg.controller;
 
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.smallflyingleg.pojo.PageResult;
 import com.smallflyingleg.pojo.SysRole;
 import com.smallflyingleg.service.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,9 +32,9 @@ public class SysRoleController {
      * @return
      */
     @GetMapping
-    public List<SysRole> sysRoleList(){
-        List<SysRole> sysRoles = sysRoleService.selectList(null);
-        return sysRoles;
+    public PageResult<SysRole> sysRoleList(Integer pageNumber, Integer pageSize,String roleName){
+        Page<SysRole> sysRoles = sysRoleService.selectPage(new Page<>(pageNumber,pageSize),new EntityWrapper<SysRole>().like("role_name",roleName));
+        return new PageResult<SysRole>(sysRoles.getTotal(),sysRoles.getRecords());
     }
 
     /**
@@ -68,12 +72,12 @@ public class SysRoleController {
 
     /**
      * 角色删除
-     * @param id
+     * @param ids
      * @return
      */
-    @DeleteMapping("{id}")
-    public boolean delete(@PathVariable("id") Long id){
-        boolean b = sysRoleService.deleteById(id);
+    @DeleteMapping("{ids}")
+    public boolean delete(@PathVariable("ids") Long[] ids){
+        boolean b = sysRoleService.deleteBatchIds(Arrays.asList(ids));
         return b;
     }
 

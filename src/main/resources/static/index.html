@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>后台登录-X-admin2.0</title>
+	<title>后台登录</title>
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -14,12 +14,16 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
 
 </head>
 <body>
+
+<div id="app">
     <!-- 顶部开始 -->
     <div class="container">
-        <div class="logo"><a href="./index.html">X-admin v2.0</a></div>
+        <div class="logo"><a href="./index.html">Welcome</a></div>
         <div class="left_open">
             <i title="展开左侧栏" class="iconfont">&#xe699;</i>
         </div>
@@ -49,6 +53,7 @@
     <!-- 顶部结束 -->
     <!-- 中部开始 -->
      <!-- 左侧菜单开始 -->
+
     <div class="left-nav">
       <div id="side-nav">
         <ul id="nav">
@@ -282,6 +287,27 @@
         <div class="copyright">Copyright ©2017 x-admin 2.3 All Rights Reserved  更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></div>  
     </div>
     <!-- 底部结束 -->
+    </div>
 
+    <script type="text/javascript">
+
+            const app = new Vue({
+                el: '#app',
+                data: {},
+                methods: {
+                    getMenus(){
+                        $.get("/sysPermission",function(data,status){
+
+                        });
+                    }
+                },
+                // 渲染后执行
+                mounted() {
+                    this.getMenus(); // 调用数据初始化函数
+
+                },
+            })
+
+    </script>
 </body>
 </html>
