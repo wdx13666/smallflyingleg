@@ -43,8 +43,8 @@ public class SysRoleController {
      * @return
      */
     @PostMapping
-    public boolean add(SysRole sysRole){
-        boolean insert = sysRoleService.insert(sysRole);
+    public boolean add(SysRole sysRole,Long [] ids){
+        boolean insert = sysRoleService.insertRoleAndPermission(sysRole,ids);
         return insert;
     }
 
@@ -54,8 +54,8 @@ public class SysRoleController {
      * @return
      */
     @GetMapping("{id}")
-    public SysRole get(@PathVariable("id") Long id){
-        SysRole sysRole = sysRoleService.selectById(id);
+    public List<SysRole> get(@PathVariable("id") Long id){
+        List<SysRole> sysRole = sysRoleService.getSysRole(id);
         return sysRole;
     }
 

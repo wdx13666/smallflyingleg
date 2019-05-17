@@ -16,4 +16,10 @@
         </collection>
     </resultMap>
 
+    <select id="getSysRole" resultMap="rolePermission">
+        SELECT sr.role_name,sp.* FROM sf_sys_role_permission AS rp,sf_sys_role AS sr , sf_sys_permission AS sp where
+        sr.role_id = rp.role_id
+        AND sp.id = rp.permission_id
+    </select>
+
 </mapper>
