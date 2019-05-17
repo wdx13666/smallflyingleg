@@ -6,6 +6,7 @@ import com.smallflyingleg.service.SysPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -79,12 +80,12 @@ public class SysPermissionController {
 
     /**
      * 资源删除
-     * @param id
+     * @param ids
      * @return
      */
-    @DeleteMapping("{id}")
-    public boolean delete(@PathVariable("id") Integer id){
-        boolean b = permissionService.deleteById(id);
+    @DeleteMapping("{ids}")
+    public boolean delete(@PathVariable("ids") Long [] ids){
+        boolean b = permissionService.deleteBatchIds(Arrays.asList(ids));
         return b;
     }
 
