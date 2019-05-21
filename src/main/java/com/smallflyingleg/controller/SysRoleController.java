@@ -32,8 +32,8 @@ public class SysRoleController {
      * @return
      */
     @GetMapping
-    public PageResult<SysRole> sysRoleList(Integer pageNumber, Integer pageSize,String roleName){
-        Page<SysRole> sysRoles = sysRoleService.selectPage(new Page<>(pageNumber,pageSize),new EntityWrapper<SysRole>().like("role_name",roleName));
+    public PageResult<SysRole> sysRoleList(Integer pageNumber, Integer pageSize,String q){
+        Page<SysRole> sysRoles = sysRoleService.selectPage(new Page<>(pageNumber,pageSize),new EntityWrapper<SysRole>().like("role_name",q));
         return new PageResult<SysRole>(sysRoles.getTotal(),sysRoles.getRecords());
     }
 

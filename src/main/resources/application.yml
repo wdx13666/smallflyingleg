@@ -66,6 +66,10 @@ mybatis-plus:
 
 
 
+appid: wx2d7c0cd6bd40b155
+partner: 1457151502
+partnerkey: pengtaoshuichangweixinshanghu316
+notifyurl: http://a31ef7db.ngrok.io/WeChatPay/WeChatPayNotify
 
 
 
