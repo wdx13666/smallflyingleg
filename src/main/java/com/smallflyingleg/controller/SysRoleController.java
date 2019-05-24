@@ -28,14 +28,25 @@ public class SysRoleController {
     private SysRoleService sysRoleService;
 
     /**
-     * 角色列表数据
+     * 角色列表数据 分页
      * @return
      */
     @GetMapping
-    public PageResult<SysRole> sysRoleList(Integer pageNumber, Integer pageSize,String q){
+    public PageResult<SysRole> sysRoleListPage(Integer pageNumber, Integer pageSize,String q){
         Page<SysRole> sysRoles = sysRoleService.selectPage(new Page<>(pageNumber,pageSize),new EntityWrapper<SysRole>().like("role_name",q));
         return new PageResult<SysRole>(sysRoles.getTotal(),sysRoles.getRecords());
     }
+
+    /**
+     * 角色列表数据
+     * @return
+     */
+    @GetMapping("/list")
+    public List<SysRole> sysRoleList(){
+        List<SysRole> sysRoles = sysRoleService.selectList(null);
+        return sysRoles;
+    }
+
 
     /**
      * 角色添加
@@ -65,8 +76,8 @@ public class SysRoleController {
      * @return
      */
     @PutMapping
-    public boolean edit(SysRole sysRole){
-        boolean b = sysRoleService.updateById(sysRole);
+    public boolean edit(SysRole sysRole,Long [] ids){
+        boolean b = sysRoleService.updateByRoleId(sysRole,ids);
         return b;
     }
 

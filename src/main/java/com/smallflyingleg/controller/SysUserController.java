@@ -47,8 +47,8 @@ public class SysUserController {
      * @return
      */
     @PostMapping
-    public boolean add(SysUser sysUser){
-        boolean insert = userService.insert(sysUser);
+    public int add(SysUser sysUser,Long [] ids){
+        int insert = userService.insertSysUserAndUserRole(sysUser,ids);
         return insert;
     }
 

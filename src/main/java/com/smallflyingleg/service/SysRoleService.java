@@ -18,4 +18,7 @@ public interface SysRoleService extends IService<SysRole> {
     public Boolean insertRoleAndPermission(SysRole sysRole,Long [] ids);
 
     public List<SysRole> getSysRole(Long id);
+
+    public Boolean updateByRoleId(SysRole sysRole,Long [] ids);
+
 }

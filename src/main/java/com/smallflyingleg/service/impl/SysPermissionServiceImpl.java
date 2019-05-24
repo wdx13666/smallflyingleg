@@ -2,6 +2,7 @@ package com.smallflyingleg.service.impl;
 
 import com.smallflyingleg.pojo.SysPermission;
 import com.smallflyingleg.mapper.SysPermissionMapper;
+import com.smallflyingleg.pojo.SysRole;
 import com.smallflyingleg.service.SysPermissionService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -24,4 +25,6 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
         List<SysPermission> sysPermissions = baseMapper.selectPermissionsByRoleId(roleId);
         return sysPermissions;
     }
+
+
 }

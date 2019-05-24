@@ -3,6 +3,7 @@ package com.smallflyingleg.controller;
 
 import com.smallflyingleg.pojo.SysPermission;
 import com.smallflyingleg.service.SysPermissionService;
+import com.smallflyingleg.service.SysRolePermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,9 @@ public class SysPermissionController {
 
     @Autowired
     private SysPermissionService permissionService;
+
+    @Autowired
+    private SysRolePermissionService sysRolePermissionService;
 
     /**
      * 根据角色id查询资源
