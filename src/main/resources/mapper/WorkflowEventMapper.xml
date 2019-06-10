@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smallflyingleg.mapper.WorkflowEventMapper">
+
+    <resultMap id="workFlowEvent" type="com.smallflyingleg.pojo.workflow.WorkflowEvent">
+        <id column="event_id" property="eventId"></id>
+        <result column="workflow_id" property="workflowId"></result>
+        <result column="date_id" property="dateId"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="start_time" property="startTime"></result>
+        <result column="end_time" property="endTime"></result>
+        <result column="next_step" property="nextStep"></result>
+        <result column="date_type" property="dateType"></result>
+        <result column="is_finish" property="finish"></result>
+        <result column="pass_num" property="passNum"></result>
+
+        <association property="workflow" javaType="com.smallflyingleg.pojo.workflow.Workflow">
+            <id column="workflow_id" property="workflowId"></id>
+            <result column="name" property="name"></result>
+            <result column="disabled" property="disabled"></result>
+            <result column="priority" property="priority"></result>
+            <result column="description" property="description"></result>
+        </association>
+
+        <association property="workflowNode" javaType="com.smallflyingleg.pojo.workflow.WorkflowNode">
+            <id column="workflow_id" property="workflowId"></id>
+            <result column="role_id" property="roleId"></result>
+            <result column="priority" property="priority"></result>
+            <result column="countersign" property="countersign"></result>
+        </association>
+
+        <collection property="workflowNode.sysRole" ofType="com.smallflyingleg.pojo.SysRole">
+            <id column="role_id" property="roleId"></id>
+            <result column="role_name" property="roleName"></result>
+        </collection>
+
+    </resultMap>
+
+    <select id="find" resultMap="workFlowEvent">
+       /* select * from sf_workflow_event we , sf_workflow wf , sf_workflow_node wn , sf_sys_role sr
+        where we.workflow_id = wf.workflow_id and wf.workflow_id = wn.workflow_id and sr.role_id = wn.role_id and we.date_type = #{dateTypeId} and we.date_id = #{dataId}*/
+        select * from sf_workflow_event we left join  sf_workflow wf  on  we.workflow_id = wf.workflow_id  left join sf_workflow_node wn on  wf.workflow_id = wn.workflow_id
+        left join  sf_sys_role sr on sr.role_id = wn.role_id and we.date_type = #{dateTypeId} and we.date_id = #{dataId}
+    </select>
+
+</mapper>

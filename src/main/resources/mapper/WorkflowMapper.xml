@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smallflyingleg.mapper.WorkflowMapper">
+
+  <resultMap id="workflowNodes" type="com.smallflyingleg.pojo.workflow.Workflow">
+      <id column="workflow_id" property="workflowId"></id>
+      <result column="name" property="name"></result>
+      <result column="is_disabled" property="disabled"></result>
+      <result column="priority" property="priority"></result>
+      <result column="description" property="description"></result>
+   <!--   <collection property="workflowNodes" javaType="java.util.List" ofType="com.smallflyingleg.pojo.workflow.WorkflowNode">
+          <id property="id" column="id"></id>
+          <result column="is_countersign" property="countersign"></result>
+          <association property="sysRole" javaType="com.smallflyingleg.pojo.SysRole" resultMap="role"></association>
+      </collection> -->
+      <collection property="workflowNodes" select="com.smallflyingleg.mapper.WorkflowNodeMapper.selectByWorkflowId" column="workflow_id" ></collection>
+  </resultMap>
+
+
+
+    <select id="findById" resultMap="workflowNodes">
+        select * from sf_workflow where workflow_id = #{workflowId}
+    </select>
+
+
+</mapper>

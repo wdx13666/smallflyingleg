@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smallflyingleg.mapper.WorkflowNodeMapper">
+
+    <resultMap id="nodes" type="com.smallflyingleg.pojo.workflow.WorkflowNode">
+               <id property="id" column="id"></id>
+                <result  column="workflow_id" property="workflowId"></result>
+                <result  column="role_id" property="roleId"></result>
+               <result column="is_countersign" property="countersign"></result>
+               <association property="sysRole" select="com.smallflyingleg.mapper.SysRoleMapper.selectByRoleId" column="role_id">
+                   <id column="role_id" property="roleId"></id>
+                   <result column="role_name" property="roleName"></result>
+               </association>
+    </resultMap>
+
+    <resultMap id="role" type="com.smallflyingleg.pojo.SysRole">
+        <id column="role_id" property="roleId"></id>
+        <result column="role_name" property="roleName"></result>
+    </resultMap>
+
+    <select id="selectByWorkflowId" resultMap="nodes">
+        select * from sf_workflow_node where workflow_id = #{id}
+    </select>
+
+</mapper>
