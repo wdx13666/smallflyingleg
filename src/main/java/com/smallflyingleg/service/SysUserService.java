@@ -13,6 +13,8 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface SysUserService extends IService<SysUser> {
 
-    public int insertSysUserAndUserRole(SysUser sysUser,Long [] ids);
+    public int insertSysUserAndUserRole(SysUser sysUser, Long[] ids);
+
+    public SysUser selectUserAndRoleById(Long id);
 
 }

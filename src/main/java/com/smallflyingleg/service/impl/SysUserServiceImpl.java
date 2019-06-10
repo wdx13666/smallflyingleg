@@ -39,4 +39,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
         return insert;
     }
+
+    @Override
+    public SysUser selectUserAndRoleById(Long id) {
+        return baseMapper.selectUserAndRoleById(id);
+    }
 }

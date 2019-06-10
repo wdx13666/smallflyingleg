@@ -34,6 +34,10 @@ public class SysUser extends Model<SysUser> {
      * 账号
      */
     private String userName;
+
+    @TableField(exist = false)
+    private List<SysRole> sysRoles;
+
     /**
      * 姓名
      */

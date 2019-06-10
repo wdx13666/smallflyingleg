@@ -31,6 +31,9 @@ public class SysRole {
     private String roleName;
 
     @TableField(exist = false)
+    private Set<SysUser> sysUsers;
+
+    @TableField(exist = false)
     private List<SysPermission> permissions;
 
 
