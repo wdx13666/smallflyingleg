@@ -53,7 +53,7 @@ public class SmallCheck extends Model<SmallCheck> {
     /**
      * 终审者
      */
-    private Integer reviewer;
+    private Long reviewer;
     /**
      * 终审时间
      */

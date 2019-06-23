@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -36,7 +37,7 @@ public class SysUser extends Model<SysUser> {
     private String userName;
 
     @TableField(exist = false)
-    private List<SysRole> sysRoles;
+    private Set<SysRole> sysRoles;
 
     /**
      * 姓名

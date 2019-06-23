@@ -24,6 +24,12 @@ public interface WorkflowEventService extends IService<WorkflowEvent> {
 
     public WorkflowEvent findById(Integer id);
 
+    /**
+     * 根据
+     * @param dataTypeId
+     * @param dataId
+     * @return
+     */
     public WorkflowEvent find(Integer dataTypeId, Integer dataId);
 
     public WorkflowEvent end(Integer eventId);

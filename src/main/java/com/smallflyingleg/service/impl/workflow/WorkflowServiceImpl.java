@@ -13,6 +13,7 @@ import com.smallflyingleg.pojo.workflow.WorkflowEvent;
 import com.smallflyingleg.pojo.workflow.WorkflowNode;
 import com.smallflyingleg.service.SysUserService;
 import com.smallflyingleg.service.workflow.*;
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -56,6 +58,7 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
     @Autowired
     private SysUserService sysUserService;
 
+    @Transactional
     public int check(Workflow workflow, Long owner, Long operator, Integer dateTypeId, Integer dataId,
                      String opinion) {
 
@@ -76,7 +79,7 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
         }*/
         // 流程轨迹存在并且没有结束
         if (event != null && !event.getFinish()) {
-            workflow = event.getWorkflow();
+            workflow = workflowService.findById(event.getWorkflowId());
         }
         List<WorkflowNode> nodes = workflow.getWorkflowNodes();
         int size = nodes.size();
@@ -90,9 +93,10 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
         for (step = size; step > 0; step--) {
             WorkflowNode node = nodes.get(step - 1);
             SysRole nodeRole = node.getSysRole();
-            Set<SysRole> roles = new HashSet<SysRole>();
-            roles.add(nodeRole);
-            if (CollectionUtils.containsAny(roles, sysUser.getSysRoles())) {
+            Set<Long> roles = new HashSet<Long>();
+            roles.add(nodeRole.getRoleId());
+            Set<Long> set = sysUser.getSysRoles().stream().map(SysRole::getRoleId).collect(Collectors.toSet());
+            if (CollectionUtils.containsAny(roles, set)) {
                 lastNode = node;
                 break;
             }
@@ -192,11 +196,13 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
             event.setNextStep(nextStep);
             event.setEndTime(endDate);
             event.setFinish(hasFinish);
+
+            workflowEventMapper.updateById(event);
+
             // 处理工作流下个节点用户
             workflowEventUserService.update(event, nextUsers);
         } else {
             // 保存工作流轨迹
-//            event = workflowEventService.save(workflow, owner, nextUsers, dateTypeId, dataId, nextStep, hasFinish);
              event = workflowEventService.save(workflow, owner, nextUsers, dateTypeId, dataId, nextStep, hasFinish);
             // 保存工作流下个节点用户
             workflowEventUserService.save(event, nextUsers);
@@ -213,7 +219,7 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
     public int reject(Workflow workflow, Long owner, Long operator, Integer dateTypeId, Integer dataId,
                       String opinion) {
         WorkflowEvent event = workflowEventService.find(dateTypeId, dataId);
-        SysUser sysUser = sysUserService.selectById(operator);
+        SysUser sysUser = sysUserService.selectUserAndRoleById(operator);
 
         if (workflow == null) {
             // 没有工作流，退回则直接打回。
@@ -226,7 +232,7 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
         }
         // 流程轨迹存在且没有结束
         if (event != null && !event.getFinish()) {
-            workflow = event.getWorkflow();
+            workflow = workflowService.findById(event.getWorkflowId());
         }
         List<WorkflowNode> nodes = workflow.getWorkflowNodes();
         int size = nodes.size();
@@ -244,9 +250,10 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
         for (step = 0; step < size; step++) {
             WorkflowNode node = nodes.get(step);
             SysRole nodeRole = node.getSysRole();
-            Set<SysRole> roles = new HashSet<SysRole>();
-            roles.add(nodeRole);
-            if (CollectionUtils.containsAny(roles, sysUser.getSysRoles())) {
+            Set<Long> roles = new HashSet<Long>();
+            roles.add(nodeRole.getRoleId());
+            Set<Long> set = sysUser.getSysRoles().stream().map(SysRole::getRoleId).collect(Collectors.toSet());
+            if (CollectionUtils.containsAny(roles, set)) {
                 break;
             }
         }
@@ -269,7 +276,7 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
         if (step > 1) {
             for (int i = step - 2; i < size; i++) {
                 WorkflowNode node = nodes.get(i);
-                if (node.getSysRole().getSysUsers().contains(owner)) {
+                if (node.getSysRole().getSysUsers().contains(sysUserService.selectById(owner))) {
                     ownerRejected = true;
                     break;
                 }
@@ -299,6 +306,7 @@ public class WorkflowServiceImpl extends ServiceImpl<WorkflowMapper, Workflow> i
             event.setFinish(hasFinish);
             // 工作流下个节点用户数据更新
             workflowEventUserService.update(event, nextUsers);
+            workflowEventMapper.updateById(event);
         } else {
             // 保存工作流轨迹
             workflowEventService.save(workflow, owner, nextUsers, dateTypeId, dataId, step, hasFinish);

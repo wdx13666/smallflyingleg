@@ -36,7 +36,7 @@ public class WorkflowRecordServiceImpl extends ServiceImpl<WorkflowRecordMapper,
     @Transactional(readOnly = true)
     public List<WorkflowRecord> getList(Integer eventId, Integer userId) {
         return baseMapper.selectList(new EntityWrapper<WorkflowRecord>().eq("event_id",eventId).
-                eq("user_id",userId).orderBy("record_time",false).orderBy("record_id",false));
+                eq(userId !=null,"user_id",userId).orderBy("record_time",false).orderBy("record_id",false));
     }
 
     @Transactional(readOnly = true)
